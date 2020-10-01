@@ -19,7 +19,7 @@ $("ul").on("click", "li", function(){
 // A GET request is made and gets the weather data (from openweather api) for the city parameter passed in
 function makeRequest(city){
     var cityName = city;
-    var weatherUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=b007a7abea7f47541c213f81d9379014";
+    var weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=b007a7abea7f47541c213f81d9379014";
     console.log(weatherUrl);
 
     // Make ajax call
@@ -30,28 +30,25 @@ function makeRequest(city){
     .done(getWeather)
 }
 
-// Takes the requested weather data and inserts it into the html for the current day and the next 5 days 
+// Takes the requested weather data and inserts it into the html for the current day
 function getWeather(data){
     console.log(data);
 
-        // Get the city name, wind speed, uv index for the current day
-        var city = data.city.name;
-        $(".cityName").append(city);
+    // Get the city name, wind speed, uv index for the current day
+    var cityName = data.name;
+    $(".cityName").text(cityName);
 
-        var windSpeed = data.list[0].wind.speed;
-        $("#day0 .windSpeed").text(windSpeed + " mph");
+    var temp = data.main.temp;
+    $("#currentTemp").text(temp);
 
-        // var uvIndex = data.list[0].
+    var humidity = data.main.humidity;
+    $("#currentHumidity").text(humidity);
 
+    var windSpeed = data.wind.speed;
+    $("#currentWind").text(windSpeed);
 
-        // Get the tempurature and humidity for current day and next 5 days
-        for(var i = 0; i < 2; i++){
-            var temp = Math.round(data.list[i].main.temp);
-            $("#day" + i + " .temp").text(temp + " F");
-
-            var humidity = data.list[i].main.humidity;
-            $("#day" + i + " .humid").text(humidity + "%");
-        }
+    // var uvIndex = data.
+        
 }
 
 
