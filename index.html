@@ -8,6 +8,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous"/>
+    
+    <link rel="stylesheet" href="style.css">
     <title>Weather</title>
   </head>
   <body>
@@ -17,10 +21,10 @@
         </header>
 
         <section class="row m-5">
-            <div class="col-3 border">
+            <div class="col-lg-3 border">
                 <label for="cityInput">Search for a city:</label>
                 <input id="cityInput" type="text">
-                <button class="btn btn-primary">Search</button>
+                <button id="btnSearch" class="btn btn-primary"><i class="fas fa-search-location"></i></button>
 
                 <ul class="list-group mt-3">
                     <li class="list-group-item">Austin</li>
@@ -28,36 +32,38 @@
                     <li class="list-group-item">New York</li>
                     <li class="list-group-item">Orlando</li>
                     <li class="list-group-item">San Francisco</li>
+                    <li class="list-group-item">Seattle</li>
+                    <li class="list-group-item">Denver</li>
                   </ul>
             </div>
 
-            <div class="col-9">
+            <div class="col-lg-9">
                 <div class="row border">
-                    <div class="col-12">
-                        <h2>Atlanta Weather:</h2>
-                        <p>Tempurature:</p>
-                        <p>Humidity:</p>
-                        <p>Wind Speed:</p>
-                        <p>UV Index:</p>
+                    <div id="day0" class="col-12">
+                        <h2 class="cityName"><i class="fas fa-map-marker-alt"></i> </h2>
+                        <h5 id="currentDate"></h5>
+
+                        <p>Tempurature: <span class="temp"></span></p>
+                        <p>Humidity: <span class="humid"></span></p>
+                        <p>Wind Speed: <span class="windSpeed"></span></p>
+                        <p>UV Index: <span class="uvIndex"></span></p>
                     </div>
                 </div>
                 <div class="row border">
                     <div class="col-12">
-                        <h2>5 Day Forecast for Atlanta</h2>
-                        <div class="card d-inline-block" style="width: 12rem;">
+                        <h2 class="mt-2">5 Day Forecast for <span class="cityName"></span></h2>
+                        <div id="day1" class="card d-inline-block" style="width: 12rem;">
                             <div class="card-body">
-                                <h5 class="card-title text-center">10/1/2020</h5>
-                                <p class="card-text">Temp: 86 F</p>
-                                <p class="card-text">Humidity: 43%</p>
+                                <h5 class="card-title text-center" class="dayName"></h5>
+                                <p class="card-text" class="date"></p>
+                                <p class="card-text">Temp: <span class="temp"></span></p>
+                                <p class="card-text">Humidity: <span class="humid"></span></p>
                             </div>
                         </div>
-                        <div class="card d-inline-block" style="width: 12rem;">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">10/1/2020</h5>
-                                <p class="card-text">Temp: 86 F</p>
-                                <p class="card-text">Humidity: 43%</p>
-                            </div>
-                        </div>
+
+                        
+
+                        
                     </div>
                 </div>
             </div>
@@ -66,8 +72,10 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+</body>
 </html>
