@@ -1,6 +1,9 @@
 // Get array of last 8 cities searched from local storage and if none, use default array
 var searchedCities = JSON.parse(localStorage.getItem("cities")) || ["Austin", "Chicago", "New York", "Orlando", "San Francisco", "Seattle", "Denver", "Los Angeles"];
 
+// Call requestWeather to insert a default (last searched) city into the dashboard
+requestWeather(searchedCities[0]);
+
 // Call getDates function to get dates
 getDates();
 
@@ -90,7 +93,6 @@ function requestForecast(city){
         url: weatherUrl
     })
     .done(getForecast)
-
 }
 
 // Takes the requested weather data and inserts it into the html for the next 5 days
