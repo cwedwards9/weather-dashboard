@@ -1,0 +1,27 @@
+body {
+    background-color: #324b5c;
+    color:#939699;
+}
+
+.jumbotron, 
+div .card,
+.list-group-item {
+    background-color:#cad9de;
+    color: #324b5c;
+}
+
+#btnSearch {
+    background-color: #939699;
+    border-color: #939699;;
+}
+
+li {
+    cursor: pointer;
+}
+li:hover {
+    text-decoration: underline;
+    opacity: 90%;
+}
+
+
+
