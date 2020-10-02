@@ -73,7 +73,7 @@ function getWeather(data){
     $(".cityName").text(cityName);
 
     var temp = Math.round(data.main.temp);
-    $("#currentTemp").text(temp + "F");
+    $("#currentTemp").text(temp + " \xB0F");
 
     var humidity = data.main.humidity;
     $("#currentHumidity").text(humidity + "%");
@@ -112,7 +112,7 @@ function getForecast(data){
     for(var i = 7; i < 40; i+= 8){
         // Temperature
         var temp = Math.floor(data.list[i].main.temp);
-        $("#day" + x + " .temp").text(temp + " F");
+        $("#day" + x + " .temp").text(temp + " \xB0F");
 
         // Humidity
         var humidity = data.list[i].main.humidity;

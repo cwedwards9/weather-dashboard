@@ -10,9 +10,22 @@ div .card,
     color: #324b5c;
 }
 
+div .day-col {
+    padding: 0px;
+    margin: 0px;
+}
+
+label {
+    display: block;
+}
+
+#cityInput {
+    width: 80%;
+}
+
 #btnSearch {
     background-color: #939699;
-    border-color: #939699;;
+    border-color: #939699;
 }
 
 li {
