@@ -21,48 +21,84 @@
         </header>
 
         <section class="row m-5">
-            <div class="col-lg-3 border">
+            <div id="citySearch" class="col-lg-3 border mb-5">
                 <label for="cityInput">Search for a city:</label>
                 <input id="cityInput" type="text">
                 <button id="btnSearch" class="btn btn-primary"><i class="fas fa-search-location"></i></button>
 
-                <ul class="list-group mt-3">
-                    <li class="list-group-item">Austin</li>
-                    <li class="list-group-item">Chicago</li>
-                    <li class="list-group-item">New York</li>
-                    <li class="list-group-item">Orlando</li>
-                    <li class="list-group-item">San Francisco</li>
-                    <li class="list-group-item">Seattle</li>
-                    <li class="list-group-item">Denver</li>
-                  </ul>
+                <ul id="searchHistory" class="list-group mt-4">
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                </ul>
             </div>
 
             <div class="col-lg-9">
                 <div class="row border">
-                    <div id="day0" class="col-12">
-                        <h2 class="cityName"><i class="fas fa-map-marker-alt"></i> </h2>
+                    <div class="col-12">
+                        <h2><i class="fas fa-map-marker-alt"></i> <span class="cityName"></span></h2>
                         <h5 id="currentDate"></h5>
 
-                        <p>Tempurature: <span class="temp"></span></p>
-                        <p>Humidity: <span class="humid"></span></p>
-                        <p>Wind Speed: <span class="windSpeed"></span></p>
-                        <p>UV Index: <span class="uvIndex"></span></p>
+                        <p>Tempurature: <span id="currentTemp"></span></p>
+                        <p>Humidity: <span id="currentHumidity"></span></p>
+                        <p>Wind Speed: <span id="currentWind"></span></p>
+                        <p>UV Index: <span id="currentUv"></span></p>
                     </div>
                 </div>
                 <div class="row border">
                     <div class="col-12">
-                        <h2 class="mt-2">5 Day Forecast for <span class="cityName"></span></h2>
-                        <div id="day1" class="card d-inline-block" style="width: 12rem;">
-                            <div class="card-body">
-                                <h5 class="card-title text-center" class="dayName"></h5>
-                                <p class="card-text" class="date"></p>
-                                <p class="card-text">Temp: <span class="temp"></span></p>
-                                <p class="card-text">Humidity: <span class="humid"></span></p>
+                        <h2 class="my-3">5 Day Forecast for <span class="cityName"></span></h2>
+                        <div class="d-flex justify-content-between">
+                            <div id="day0" class="card d-inline-block" style="width: 10rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center dayName"></h5>
+                                    <p class="card-text date"></p>
+                                    <p class="card-text"><span class="temp"></span></p>
+                                    <p class="card-text">Humidity: <span class="humid"></span></p>
+                                </div>
+                            </div>
+    
+                            <div id="day1" class="card d-inline-block" style="width: 10rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center dayName"></h5>
+                                    <p class="card-text date"></p>
+                                    <p class="card-text"><span class="temp"></span></p>
+                                    <p class="card-text">Humidity: <span class="humid"></span></p>
+                                </div>
+                            </div>
+    
+                            <div id="day2" class="card d-inline-block" style="width: 10rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center dayName"></h5>
+                                    <p class="card-text date"></p>
+                                    <p class="card-text"><span class="temp"></span></p>
+                                    <p class="card-text">Humidity: <span class="humid"></span></p>
+                                </div>
+                            </div>
+    
+                            <div id="day3" class="card d-inline-block" style="width: 10rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center dayName"></h5>
+                                    <p class="card-text date"></p>
+                                    <p class="card-text"><span class="temp"></span></p>
+                                    <p class="card-text">Humidity: <span class="humid"></span></p>
+                                </div>
+                            </div>
+    
+                            <div id="day4" class="card d-inline-block" style="width: 10rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center dayName"></h5>
+                                    <p class="card-text date"></p>
+                                    <p class="card-text"><span class="temp"></span></p>
+                                    <p class="card-text">Humidity: <span class="humid"></span></p>
+                                </div>
                             </div>
                         </div>
-
-                        
-
                         
                     </div>
                 </div>
