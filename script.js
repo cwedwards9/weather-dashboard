@@ -1,7 +1,7 @@
 // Get array of last 8 cities searched from local storage and if none, use default array
 var searchedCities = JSON.parse(localStorage.getItem("cities")) || ["Austin", "Chicago", "New York", "Orlando", "San Francisco", "Seattle", "Denver", "Los Angeles"];
 
-// Call requestWeather to insert a default (last searched) city into the dashboard
+// Call requestWeather to insert a default (last searched) city into the dashboard on page load
 requestWeather(searchedCities[0]);
 
 // Call getDates function to get dates
@@ -41,13 +41,10 @@ $("ul").on("click", "li", function(){
 // Request CURRENT weather data (from openweather api) for the city parameter passed in
 function requestWeather(city){
     var cityName = city;
-    var weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=b007a7abea7f47541c213f81d9379014";
+    var weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=b007a7abea7f47541c213f81d9379014";
 
-    // First save searched city into searchedCities array and remove last item in array
-    searchedCities.unshift(cityName);
-    searchedCities.pop();
-    localStorage.setItem("cities", JSON.stringify(searchedCities));
-    createList();
+    // Clear input
+    $("#cityInput").val("");
 
     // Make ajax call
     $.ajax({
@@ -55,6 +52,17 @@ function requestWeather(city){
         url: weatherUrl
     })
     .done(getWeather)
+
+
+    // Save searched city into searchedCities array and remove last item in array if it is a new city not already in array
+    if(!searchedCities.includes(cityName)){
+        searchedCities.unshift(cityName);
+        searchedCities.pop();
+        localStorage.setItem("cities", JSON.stringify(searchedCities));
+    }
+    
+    // Call create list function to insert city array names into the list 
+    createList();
 }
 
 // Takes the requested weather data and inserts it into the html for the current day
@@ -85,7 +93,7 @@ function getWeather(data){
 // Request FORECASTED weather data (from openweather api) for the city parameter passed in
 function requestForecast(city){
     var cityName = city;
-    var weatherUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=b007a7abea7f47541c213f81d9379014";
+    var weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=b007a7abea7f47541c213f81d9379014";
 
     // Make ajax call
     $.ajax({
