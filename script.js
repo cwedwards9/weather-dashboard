@@ -1,5 +1,11 @@
+// Get array of last 8 cities searched from local storage and if none, use default array
+var searchedCities = JSON.parse(localStorage.getItem("cities")) || ["Austin", "Chicago", "New York", "Orlando", "San Francisco", "Seattle", "Denver", "Los Angeles"];
+
 // Call getDates function to get dates
 getDates();
+
+// Call createList to insert city search history into the list side-bar
+createList();
 
 
 // When a user enters in a city and clicks search, it calls the requestWeather function
@@ -33,6 +39,12 @@ $("ul").on("click", "li", function(){
 function requestWeather(city){
     var cityName = city;
     var weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=b007a7abea7f47541c213f81d9379014";
+
+    // First save searched city into searchedCities array and remove last item in array
+    searchedCities.unshift(cityName);
+    searchedCities.pop();
+    localStorage.setItem("cities", JSON.stringify(searchedCities));
+    createList();
 
     // Make ajax call
     $.ajax({
@@ -113,5 +125,17 @@ function getDates(){
         
         $("#day" + i + " .dayName").text(dayName);
         $("#day" + i + " .date").text(date);
+    }
+}
+
+// Insert city search history into the list side-bar
+function createList(){
+    var items = $("li");
+    var cities = Array.from(items);
+
+    for(var i = 0; i < searchedCities.length; i++){
+        var city = cities[i];
+
+        $(city).text(searchedCities[i]);   
     }
 }
