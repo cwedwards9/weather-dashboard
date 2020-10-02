@@ -21,7 +21,7 @@
         </header>
 
         <section class="row m-5">
-            <div id="citySearch" class="col-lg-3 border mb-5">
+            <div id="citySearch" class="col-lg-3 mb-5">
                 <label for="cityInput">Search for a city:</label>
                 <input id="cityInput" type="text">
                 <button id="btnSearch" class="btn btn-primary"><i class="fas fa-search-location"></i></button>
@@ -39,10 +39,8 @@
             </div>
 
 
-
-
             <div class="col-lg-9">
-                <div class="row border">
+                <div class="row border rounded">
                     <div class="col-12">
                         <h2><i class="fas fa-map-marker-alt"></i> <span class="cityName"></span></h2>
                         <h5 id="currentDate"></h5>
@@ -55,12 +53,12 @@
                 </div>
 
 
-                <div class="row border">
+                <div class="row">
                     <div class="col-lg-12">
                         <h2 class="my-3">5 Day Forecast for <span class="cityName"></span></h2>
 
                         <div class="row d-flex justify-content-between">
-                            <div class="col-sm-6 col-lg-2 d-flex justify-content-center mb-4 day-col">
+                            <div class="col-sm-6 col-md-4 col-xl-2 d-flex justify-content-center mb-4 day-col">
                                 <div id="day0" class="card" style="width: 14rem;">
                                     <div class="card-body">
                                         <h5 class="card-title text-center dayName"></h5>
@@ -71,7 +69,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-6 col-lg-2 d-flex justify-content-center mb-4 day-col">
+                            <div class="col-sm-6 col-md-4 col-xl-2 d-flex justify-content-center mb-4 day-col">
                                 <div id="day1" class="card" style="width: 14rem;">
                                     <div class="card-body">
                                         <h5 class="card-title text-center dayName"></h5>
@@ -82,7 +80,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-6 col-lg-2 d-flex justify-content-center mb-4 day-col">
+                            <div class="col-sm-6 col-md-4 col-xl-2 d-flex justify-content-center mb-4 day-col">
                                 <div id="day2" class="card" style="width: 14rem;">
                                     <div class="card-body">
                                         <h5 class="card-title text-center dayName"></h5>
@@ -93,7 +91,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-6 col-lg-2 d-flex justify-content-center mb-4 day-col">
+                            <div class="col-sm-6 col-md-4 col-xl-2 d-flex justify-content-center mb-4 day-col">
                                 <div id="day3" class="card" style="width: 14rem;">
                                     <div class="card-body">
                                         <h5 class="card-title text-center dayName"></h5>
@@ -104,7 +102,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-6 col-lg-2 d-flex justify-content-center mb-4 day-col">
+                            <div class="col-sm-6 col-md-4 col-xl-2 d-flex justify-content-center mb-4 day-col">
                                 <div id="day4" class="card" style="width: 14rem;">
                                     <div class="card-body">
                                         <h5 class="card-title text-center dayName"></h5>
@@ -114,7 +112,18 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
+                            <div class="col-sm-6 col-md-4 col-xl-2 d-xl-none d-flex justify-content-center mb-4 day-col">
+                                <div class="card" style="width: 14rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center"></h5>
+                                        <p class="card-text"></p>
+                                        <p class="card-text"></span></p>
+                                        <p class="card-text"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
