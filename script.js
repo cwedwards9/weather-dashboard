@@ -86,13 +86,8 @@ function getForecast(data){
     console.log(data);
 
     var x = 0;
-    // Get the date and its forecasted high and low as well as the humidity and chance of rain
+    // Get the forecasted temperature as well as the humidity and chance of rain
     for(var i = 7; i < 40; i+= 8){
-        // Date
-        var date = data.list[i].dt_txt;
-        console.log(date);
-        $("#day" + x + " .date").text(date);
-
         // Temperature
         var temp = Math.floor(data.list[i].main.temp);
         $("#day" + x + " .temp").text(temp + " F");
@@ -111,10 +106,12 @@ function getDates(){
     var now = moment().format("dddd, MMMM Do YYYY");
     $("#currentDate").text(now);
 
-    // Get next five days and insert them into the weather forecast cards
-    // for(var i = 1; i < 2; i++){
-    //     var day = moment().add(1, 'days');
+    // Get next five days (name and date) and insert them into the weather forecast cards
+    for(var i = 0; i < 5; i++){
+        var dayName = moment().add(i + 1, 'days').format("dddd");
+        var date = moment().add(i + 1, 'days').format("MMM D, YYYY");
         
-    //     $("#day" + i + " .date").text(day);
-    // }
+        $("#day" + i + " .dayName").text(dayName);
+        $("#day" + i + " .date").text(date);
+    }
 }
