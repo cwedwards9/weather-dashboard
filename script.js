@@ -105,6 +105,14 @@ function getUVIndex(lat, lon){
     .done(function(data){
         var uvIndex = data.value;
         $("#currentUv").text(uvIndex);
+
+        if(uvIndex < 4){
+            $("#currentUv").css("background-color", "#289500");
+        } else if(uvIndex >= 4 && uvIndex <= 6){
+            $("#currentUv").css("background-color", "#F85900");
+        } else {
+            $("#currentUv").css("background-color", "#D80010");
+        }
     })
 }
 
