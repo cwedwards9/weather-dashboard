@@ -67,6 +67,7 @@ function requestWeather(city){
 
 // Takes the requested weather data and inserts it into the html for the current day
 function getWeather(data){
+    console.log(data);
 
     // Get the city name, wind speed, uv index for the current day
     var cityName = data.name;
@@ -81,12 +82,30 @@ function getWeather(data){
     var windSpeed = data.wind.speed;
     $("#currentWind").text(windSpeed + " mph");
 
-    // var uvIndex = data.
+    // Get latitude and longitude to use to find UV Index
+    var lat = data.coord.lat;
+    var lon = data.coord.lon;
+    getUVIndex(lat, lon);
 
 
     // Call requestForecast function to request the data for future weather forecast
     requestForecast(cityName);
         
+}
+
+
+// Get UV Index from OpenWeather map's uv api
+function getUVIndex(lat, lon){
+    var url = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=b007a7abea7f47541c213f81d9379014";
+
+    $.ajax({
+        method: "GET",
+        url: url
+    })
+    .done(function(data){
+        var uvIndex = data.value;
+        $("#currentUv").text(uvIndex);
+    })
 }
 
 
@@ -105,7 +124,7 @@ function requestForecast(city){
 
 // Takes the requested weather data and inserts it into the html for the next 5 days
 function getForecast(data){
-    console.log(data);
+    // console.log(data);
 
     var x = 0;
     // Get the forecasted temperature as well as the humidity and chance of rain
