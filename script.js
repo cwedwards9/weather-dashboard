@@ -96,7 +96,7 @@ function getWeather(data){
 
 // Get UV Index from OpenWeather map's uv api
 function getUVIndex(lat, lon){
-    var url = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=b007a7abea7f47541c213f81d9379014";
+    var url = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=b007a7abea7f47541c213f81d9379014";
 
     $.ajax({
         method: "GET",
