@@ -1,5 +1,5 @@
 // Get array of last 8 cities searched from local storage and if none, use default array
-var searchedCities = JSON.parse(localStorage.getItem("cities")) || ["Austin", "Chicago", "New York", "Orlando", "San Francisco", "Seattle", "Denver", "Los Angeles"];
+var searchedCities = JSON.parse(localStorage.getItem("cities")) || ["Austin", "Chicago", "Dallas", "Houston", "Los Angeles", "New York", "Philadelphia", "Phoenix", "San Antonio", "San Diego"];
 
 // Call requestWeather to insert a default (last searched) city into the dashboard on page load
 requestWeather(searchedCities[0]);
@@ -68,11 +68,15 @@ function requestWeather(city){
 // Takes the requested weather data and inserts it into the html for the current day
 function getWeather(data){
     console.log(data);
-
-    // Get the city name, wind speed, uv index for the current day
+    // Get the city name, weather condition, wind speed, uv index for the current day
     var cityName = data.name;
     $(".cityName").text(cityName);
 
+    $("#weatherIcon").removeClass("fas fa-sun fas fa-cloud fas fa-cloud-showers-heavy fas fa-cloud-sun-rain");
+    var weatherCondition = data.weather[0].main;
+    var icon = getIcon(weatherCondition);
+    $("#weatherIcon").addClass(icon);
+    
     var temp = Math.round(data.main.temp);
     $("#currentTemp").text(temp + " \xB0F");
 
@@ -87,10 +91,35 @@ function getWeather(data){
     var lon = data.coord.lon;
     getUVIndex(lat, lon);
 
-
     // Call requestForecast function to request the data for future weather forecast
     requestForecast(cityName);
-        
+}
+
+
+// Get the weather icon for the current weather of the city
+function getIcon(condition){
+    var icon;
+    switch(condition){
+        case "Clear":
+            icon = "fas fa-sun";
+            break;
+        case "Clouds":
+            icon = "fas fa-cloud";
+            break;
+        case "Rain":
+            icon = "fas fa-cloud-showers-heavy";
+            break;
+        case "Mist":
+            icon = "fas fa-cloud-sun-rain";
+            break;
+        case "Fog":
+            icon = "fas fa-smog";
+            break;
+        default:
+            icon = "fas fa-cloud-sun";
+            break;
+    }
+    return icon;
 }
 
 
@@ -132,7 +161,7 @@ function requestForecast(city){
 
 // Takes the requested weather data and inserts it into the html for the next 5 days
 function getForecast(data){
-    // console.log(data);
+    console.log(data);
 
     var x = 0;
     // Get the forecasted temperature as well as the humidity and chance of rain
@@ -144,6 +173,12 @@ function getForecast(data){
         // Humidity
         var humidity = data.list[i].main.humidity;
         $("#day" + x + " .humid").text(humidity + "%");
+
+        // Weather Condition Icon
+        $("#day" + x + " .icon").removeClass("fas fa-sun fas fa-cloud fas fa-cloud-showers-heavy fas fa-cloud-sun-rain");
+        var condition = data.list[i].weather[0].main;
+        var icon = getIcon(condition);
+        $("#day" + x + " .icon").addClass(icon);
 
         x++;
     }
