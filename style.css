@@ -48,3 +48,20 @@ label {
     display: block;
 }
 
+/* Weather icon colors */
+.fa-sun {
+    color: yellow;
+}
+.fa-cloud {
+    color: white;
+}
+.fa-cloud-sun-rain {
+    color: gray;
+}
+.fa-cloud-showers-heavy {
+    color: cornflowerblue;
+}
+
+i.icon {
+    font-size: 40px;
+}
