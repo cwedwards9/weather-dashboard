@@ -115,6 +115,9 @@ function getIcon(condition){
         case "Fog":
             icon = "fas fa-smog";
             break;
+        case "Haze":
+            icon = "fas fa-smog";
+            break;
         default:
             icon = "fas fa-cloud-sun";
             break;
