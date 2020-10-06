@@ -67,11 +67,11 @@ function requestWeather(city){
 
 // Takes the requested weather data and inserts it into the html for the current day
 function getWeather(data){
-    console.log(data);
     // Get the city name, weather condition, wind speed, uv index for the current day
     var cityName = data.name;
     $(".cityName").text(cityName);
 
+    // Remove any active classes, set weather condition variable, call getIcon function to retrieve corresponding icon
     $("#weatherIcon").removeClass("fas fa-sun fas fa-cloud fas fa-cloud-showers-heavy fas fa-cloud-sun-rain");
     var weatherCondition = data.weather[0].main;
     var icon = getIcon(weatherCondition);
@@ -164,8 +164,6 @@ function requestForecast(city){
 
 // Takes the requested weather data and inserts it into the html for the next 5 days
 function getForecast(data){
-    console.log(data);
-
     var x = 0;
     // Get the forecasted temperature as well as the humidity and chance of rain
     for(var i = 7; i < 40; i+= 8){
