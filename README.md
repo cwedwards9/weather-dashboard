@@ -1,6 +1,7 @@
 # weather-dashboard
 A dashboard that shows the current and future weather for your city.
 
+[Deployed Application](https://cwedwards9.github.io/weather-dashboard/)
 
 ## Description
 Users can use this app to search for a city and get weather results back for the current day and the forecast for the next 5 days. The results include the tempurature, humidity, wind speed, UV Index, as well as the weather condition displayed through weather icons.
