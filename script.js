@@ -1,5 +1,5 @@
 // Get array of last 8 cities searched from local storage and if none, use default array
-var searchedCities = JSON.parse(localStorage.getItem("cities")) || ["Austin", "Chicago", "Dallas", "Houston", "Los Angeles", "New York", "Philadelphia", "Phoenix", "San Antonio", "San Diego"];
+const searchedCities = JSON.parse(localStorage.getItem("cities")) || ["Austin", "Chicago", "Dallas", "Houston", "Los Angeles", "New York", "Philadelphia", "Phoenix", "San Antonio", "San Diego"];
 
 // Call requestWeather to insert a default (last searched) city into the dashboard on page load
 requestWeather(searchedCities[0]);
@@ -13,7 +13,7 @@ createList();
 
 // When a user enters in a city and clicks search, it calls the requestWeather function
 $("#btnSearch").on("click", function(){
-    var cityInput = $("#cityInput").val();
+    let cityInput = $("#cityInput").val();
     if(cityInput !== ""){
         requestWeather(cityInput);
     } else {
@@ -23,7 +23,7 @@ $("#btnSearch").on("click", function(){
 // When a user presses the enter key with a city in the input, it calls the requestWeather function
 $("#cityInput").on("keypress", function(e){
     if(e.which === 13){
-        var cityEnter = $(this).val();
+        let cityEnter = $(this).val();
         if(cityEnter !== ""){
             requestWeather(cityEnter);
         } else {
@@ -33,15 +33,15 @@ $("#cityInput").on("keypress", function(e){
 });
 // When a user clicks on a city in the history list, it calls the requestWeather function 
 $("ul").on("click", "li", function(){
-    var cityList = $(this).text();
+    let cityList = $(this).text();
    
     requestWeather(cityList);
 });
 
 // Request CURRENT weather data (from openweather api) for the city parameter passed in
 function requestWeather(city){
-    var cityName = city;
-    var weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=b007a7abea7f47541c213f81d9379014";
+    let cityName = city;
+    let weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=b007a7abea7f47541c213f81d9379014";
 
     // Clear input
     $("#cityInput").val("");
@@ -68,27 +68,27 @@ function requestWeather(city){
 // Takes the requested weather data and inserts it into the html for the current day
 function getWeather(data){
     // Get the city name, weather condition, wind speed, uv index for the current day
-    var cityName = data.name;
+    let cityName = data.name;
     $(".cityName").text(cityName);
 
     // Remove any active classes, set weather condition variable, call getIcon function to retrieve corresponding icon
     $("#weatherIcon").removeClass("fas fa-sun fas fa-cloud fas fa-cloud-showers-heavy fas fa-cloud-sun-rain");
-    var weatherCondition = data.weather[0].main;
-    var icon = getIcon(weatherCondition);
+    let weatherCondition = data.weather[0].main;
+    let icon = getIcon(weatherCondition);
     $("#weatherIcon").addClass(icon);
     
-    var temp = Math.round(data.main.temp);
+    let temp = Math.round(data.main.temp);
     $("#currentTemp").text(temp + " \xB0F");
 
-    var humidity = data.main.humidity;
+    let humidity = data.main.humidity;
     $("#currentHumidity").text(humidity + "%");
 
-    var windSpeed = data.wind.speed;
+    let windSpeed = data.wind.speed;
     $("#currentWind").text(windSpeed + " mph");
 
     // Get latitude and longitude to use to find UV Index
-    var lat = data.coord.lat;
-    var lon = data.coord.lon;
+    let lat = data.coord.lat;
+    let lon = data.coord.lon;
     getUVIndex(lat, lon);
 
     // Call requestForecast function to request the data for future weather forecast
@@ -128,14 +128,14 @@ function getIcon(condition){
 
 // Get UV Index from OpenWeather map's uv api
 function getUVIndex(lat, lon){
-    var url = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=b007a7abea7f47541c213f81d9379014";
+    let url = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=b007a7abea7f47541c213f81d9379014";
 
     $.ajax({
         method: "GET",
         url: url
     })
     .done(function(data){
-        var uvIndex = data.value;
+        let uvIndex = data.value;
         $("#currentUv").text(uvIndex);
 
         if(uvIndex < 4){
@@ -151,8 +151,8 @@ function getUVIndex(lat, lon){
 
 // Request FORECASTED weather data (from openweather api) for the city parameter passed in
 function requestForecast(city){
-    var cityName = city;
-    var weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=b007a7abea7f47541c213f81d9379014";
+    let cityName = city;
+    let weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid=b007a7abea7f47541c213f81d9379014";
 
     // Make ajax call
     $.ajax({
@@ -164,21 +164,21 @@ function requestForecast(city){
 
 // Takes the requested weather data and inserts it into the html for the next 5 days
 function getForecast(data){
-    var x = 0;
+    let x = 0;
     // Get the forecasted temperature as well as the humidity and chance of rain
-    for(var i = 7; i < 40; i+= 8){
+    for(let i = 7; i < 40; i+= 8){
         // Temperature
-        var temp = Math.floor(data.list[i].main.temp);
+        let temp = Math.floor(data.list[i].main.temp);
         $("#day" + x + " .temp").text(temp + " \xB0F");
 
         // Humidity
-        var humidity = data.list[i].main.humidity;
+        let humidity = data.list[i].main.humidity;
         $("#day" + x + " .humid").text(humidity + "%");
 
         // Weather Condition Icon
         $("#day" + x + " .icon").removeClass("fas fa-sun fas fa-cloud fas fa-cloud-showers-heavy fas fa-cloud-sun-rain");
-        var condition = data.list[i].weather[0].main;
-        var icon = getIcon(condition);
+        let condition = data.list[i].weather[0].main;
+        let icon = getIcon(condition);
         $("#day" + x + " .icon").addClass(icon);
 
         x++;
@@ -188,13 +188,13 @@ function getForecast(data){
 
 // Get the dates for today and the next 5 days
 function getDates(){
-    var now = moment().format("dddd, MMMM Do YYYY");
+    let now = moment().format("dddd, MMMM Do YYYY");
     $("#currentDate").text(now);
 
     // Get next five days (name and date) and insert them into the weather forecast cards
-    for(var i = 0; i < 5; i++){
-        var dayName = moment().add(i + 1, 'days').format("dddd");
-        var date = moment().add(i + 1, 'days').format("MMM D, YYYY");
+    for(let i = 0; i < 5; i++){
+        let dayName = moment().add(i + 1, 'days').format("dddd");
+        let date = moment().add(i + 1, 'days').format("MMM D, YYYY");
         
         $("#day" + i + " .dayName").text(dayName);
         $("#day" + i + " .date").text(date);
@@ -203,11 +203,11 @@ function getDates(){
 
 // Insert city search history into the list side-bar
 function createList(){
-    var items = $("li");
-    var cities = Array.from(items);
+    let items = $("li");
+    let cities = Array.from(items);
 
-    for(var i = 0; i < searchedCities.length; i++){
-        var city = cities[i];
+    for(let i = 0; i < searchedCities.length; i++){
+        let city = cities[i];
 
         $(city).text(searchedCities[i]);   
     }
