@@ -1,5 +1,5 @@
-# weather-dashboard
-A dashboard that shows the current and future weather for your city.
+# Weather Dashboard
+A dashboard that shows the current and forecasted weather for your city.
 
 [Deployed Application](https://cwedwards9.github.io/weather-dashboard/)
 
@@ -15,4 +15,7 @@ The dashboard will save a list of 10 of the most recently searched cities in a l
 * Moment.js
 
 ## Example
-![weather-dashboard example](weather-dashboard-demo.gif)
+![weather-dashboard example](./assets/weather-dashboard-demo.gif)
+
+## License
+MIT
