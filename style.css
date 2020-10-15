@@ -5,10 +5,10 @@ body {
 
 .jumbotron {
     height: 200px;
-    background-image: url("https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80");
-    background-repeat: no-repeat;
+    background-image: url("./assets/weather.jpg");
     background-size: cover;
-    color: black;
+    background-position: 0px 0px;
+    color: white;
 }
 
 #cityInput {
