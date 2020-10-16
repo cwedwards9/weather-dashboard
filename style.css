@@ -9,15 +9,29 @@ body {
     background-size: cover;
     background-position: 0px 0px;
     color: white;
+    margin-bottom: 0px;
+}
+
+label {
+    display: block;
+}
+
+#searchForm {
+    display: flex;
+    justify-content: space-between;
 }
 
 #cityInput {
-    width: 80%;
+    width: 85%;
+    margin-right: 10px;
 }
 
 #btnSearch {
     background-color: #939699;
     border-color: #939699;
+    width: 10%;
+    max-width: 60px;
+    min-width: 40px;
 }
 
 li {
@@ -42,10 +56,6 @@ div .card,
 div .day-col {
     padding: 0px;
     margin: 0px;
-}
-
-label {
-    display: block;
 }
 
 /* Weather icon colors */
