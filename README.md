@@ -18,4 +18,6 @@ The dashboard will save a list of 10 of the most recently searched cities in a l
 ![weather-dashboard example](./assets/weather-dashboard-demo.gif)
 
 ## License
-MIT
+Copyright (c) Chase Edwards
+Licensed under The MIT License.
+[![License](https://img.shields.io/badge/license-The%20MIT%20License-success.svg)](https://shields.io/)
